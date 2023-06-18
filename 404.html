@@ -7,6 +7,20 @@
       font-family: Arial, sans-serif;
       text-align: center;
       margin-top: 200px;
+      animation: gradientAnimation 10s infinite alternate;
+    }
+
+    @keyframes gradientAnimation {
+      0% { background: linear-gradient(to right, green, lightblue); }
+      50% { background: linear-gradient(to right, lightblue, green); }
+      100% { background: linear-gradient(to right, green, lightblue); }
+    }
+
+    .box {
+      display: inline-block;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
     }
 
     h1 {
@@ -28,8 +42,8 @@
     button {
       padding: 10px 20px;
       font-size: 16px;
-      background-color: rgb(78, 205, 196);
-      color: white;
+      background-color: #000;
+      color: #fff;
       border: none;
       border-radius: 50px;
       cursor: pointer;
@@ -38,7 +52,7 @@
     }
 
     button:hover {
-      background-color: rgb(54, 165, 153);
+      background-color: #444;
       transform: scale(1.05);
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
@@ -55,11 +69,13 @@
   </style>
 </head>
 <body>
-  <h1 id="text">404 - Seite nicht gefunden</h1>
-  <div class="button-container">
-    <button onclick="window.location.href='teamzom.de/teamzom'">TeamZom</button>
-    <button onclick="window.location.href='teamzom.de/zevkev'">Zevkev</button>
-    <button onclick="window.location.href='teamzom.de/jamonhd'">JamonHD</button>
+  <div class="box">
+    <h1 id="text">404 - Seite nicht gefunden</h1>
+    <div class="button-container">
+      <button onclick="window.location.href='teamzom.de/teamzom'">TeamZom</button>
+      <button onclick="window.location.href='teamzom.de/zevkev'">Zevkev</button>
+      <button onclick="window.location.href='teamzom.de/jamonhd'">JamonHD</button>
+    </div>
   </div>
 
   <script>
@@ -151,18 +167,21 @@
       var textElement = document.getElementById("text");
       var randomIndex = getRandomIndex(texts);
       var randomFont = fonts[getRandomIndex(fonts)];
-      var randomColor = getRandomColor();
       var randomSpeaker = speakers[getRandomIndex(speakers)];
+      var color1 = getRandomColor();
+      var color2 = getRandomColor();
+      var backgroundColor = getRandomColor();
 
       textElement.textContent = randomSpeaker + " sagt: 404 - " + texts[randomIndex];
-      textElement.style.background = "linear-gradient(to right, " + getRandomColor() + ", " + getRandomColor() + ")";
+      textElement.style.background = "linear-gradient(to right, " + color1 + ", " + color2 + ")";
       textElement.style.webkitTextFillColor = "transparent";
       textElement.style.webkitBackgroundClip = "text";
-      textElement.style.color = randomColor;
       textElement.style.fontFamily = randomFont;
+      document.body.style.backgroundColor = backgroundColor;
     }
 
     window.addEventListener("load", changeText);
   </script>
 </body>
 </html>
+
