@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>404 Seite nicht gefunden</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 200px;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      background: linear-gradient(to right, rgb(255, 107, 107), rgb(78, 205, 196));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .button-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      grid-gap: 10px;
+      justify-items: center;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: rgb(78, 205, 196);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    button:hover {
+      background-color: rgb(54, 165, 153);
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    @media screen and (max-width: 600px) {
+      h1 {
+        font-size: 36px;
+      }
+
+      .button-container {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1 id="text">404 - Seite nicht gefunden</h1>
+  <div class="button-container">
+    <button onclick="window.location.href='teamzom.de/teamzom'">TeamZom</button>
+    <button onclick="window.location.href='teamzom.de/zevkev'">Zevkev</button>
+    <button onclick="window.location.href='teamzom.de/jamonhd'">JamonHD</button>
+  </div>
+
+  <script>
+    var texts = [
+      "Seite nicht gefunden",
+      "Hoppla! 404 Fehler",
+      "Diese Seite existiert nicht",
+      "Verloren im Internet",
+      "Die Seite, nach der Sie suchen, fehlt",
+      "Es scheint, Sie haben eine falsche Abzweigung genommen",
+      "Hier gibt es nichts zu sehen",
+      "Hoppla, etwas ist schiefgelaufen",
+      "Die Seite ist verschwunden",
+      "Huch! Die Seite ist weg",
+      "Entschuldigung, diese Seite ist nicht verfügbar",
+      "Oh-oh! Seite nicht gefunden",
+      "Hmmm... Kann diese Seite nicht finden",
+      "Yikes! Diese Seite fehlt",
+      "Oh-oh, es sieht aus, als wäre etwas schiefgelaufen",
+      "Oh nein! Diese Seite ist verloren",
+      "Houston, wir haben ein Problem",
+      "Seite nicht gefunden. Versuchen Sie es erneut",
+      "Fehler 404: Seite nicht gefunden",
+      "Ups! Die Seite ist weg",
+      "Oops, da ist etwas schiefgelaufen",
+      "Ups! Diese Seite ist verschwunden",
+      "Die Seite konnte nicht gefunden werden",
+      "Das ist peinlich. Die Seite ist nicht da",
+      "404 - Die Seite ist nicht da",
+      "Ihre Suche ergab keine Treffer",
+      "Die Seite wurde nicht gefunden. Versuchen Sie es erneut",
+      "Seite nicht gefunden. Bitte überprüfen Sie die URL",
+    ];
+
+    var fonts = [
+      "Arial, sans-serif",
+      "Verdana, sans-serif",
+      "Helvetica, sans-serif",
+      "Times New Roman, serif",
+      "Courier New, monospace",
+      "Georgia, serif",
+      "Palatino, serif",
+      "Garamond, serif",
+      "Bookman, serif",
+      "Comic Sans MS, cursive",
+      "Impact, fantasy",
+      "Courier, monospace",
+      "Lucida Console, monospace",
+      "Trebuchet MS, sans-serif",
+      "Arial Black, sans-serif",
+      "Century Gothic, sans-serif",
+      "Lucida Sans Unicode, sans-serif",
+      "Tahoma, sans-serif",
+      "Geneva, sans-serif",
+      "Franklin Gothic Medium, sans-serif",
+      "Brush Script MT, cursive",
+      "Copperplate, fantasy",
+      "Rockwell, serif",
+      "Bodoni MT, serif",
+      "Lucida Bright, serif",
+      "Futura, sans-serif",
+      "Consolas, monospace",
+      "Segoe UI, sans-serif",
+      "Myriad Pro, sans-serif",
+      "Optima, sans-serif",
+      "Baskerville, serif",
+    ];
+
+    var speakers = [
+      "ZevKev",
+      "JamonHD",
+      "TeamZom",
+    ];
+
+    function getRandomIndex(array) {
+      return Math.floor(Math.random() * array.length);
+    }
+
+    function getRandomColor() {
+      var letters = "0123456789ABCDEF";
+      var color = "#";
+      for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+
+    function changeText() {
+      var textElement = document.getElementById("text");
+      var randomIndex = getRandomIndex(texts);
+      var randomFont = fonts[getRandomIndex(fonts)];
+      var randomColor = getRandomColor();
+      var randomSpeaker = speakers[getRandomIndex(speakers)];
+
+      textElement.textContent = randomSpeaker + " sagt: 404 - " + texts[randomIndex];
+      textElement.style.background = "linear-gradient(to right, " + getRandomColor() + ", " + getRandomColor() + ")";
+      textElement.style.webkitTextFillColor = "transparent";
+      textElement.style.webkitBackgroundClip = "text";
+      textElement.style.color = randomColor;
+      textElement.style.fontFamily = randomFont;
+    }
+
+    window.addEventListener("load", changeText);
+  </script>
+</body>
+</html>
