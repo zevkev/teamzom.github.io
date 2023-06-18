@@ -1,123 +1,43 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Spende</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-      margin: 0;
-      padding: 0;
-    }
+<html style="font-size: 16px;" lang="de-DE"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Teamzom">
+    <meta name="description" content="TeamZom Spende!">
+    <title>TeamZom Discord</title>
+    <link rel="stylesheet" href="nicepage.css" media="screen">
+<link rel="stylesheet" href="Startseite.css" media="screen">
+    <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+    <meta name="generator" content="Nicepage 5.8.13, nicepage.com">
+    <meta property="og:title" content="Unterstütze uns!">
+    <meta property="og:description" content="TeamZom Discord">
+    <meta property="og:image" content="images/whitesmall.png">
+    <link rel="icon" href="images/favicon3.png">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
     
-    .container {
-      max-width: 500px;
-      margin: 0 auto;
-      padding: 40px;
-      background-color: #ffffff;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    }
     
-    .header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "TeamZom"
+}</script>
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:type" content="website">
+  <meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
+  <body class="u-body u-xl-mode" data-lang="de">
+    <section class="u-black u-clearfix u-section-1" id="sec-2848">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-clearfix u-custom-html u-expanded-width u-custom-html-1">
+          <title>TeamZom Discord</title>
+          <script> window.location.replace("https://mercury.streamelements.com/tip/teamzom"); </script>
+        </div>
+        <img class="u-image u-image-contain u-image-default u-image-1" src="images/whitesmall.png?rand=ec64" alt="" data-image-width="2000" data-image-height="846">
+      </div>
+    </section>
     
-    .profile-image {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      margin-bottom: 20px;
-    }
     
-    .content {
-      text-align: center;
-      margin-bottom: 40px;
-    }
     
-    .content p {
-      font-size: 18px;
-      margin-bottom: 20px;
-    }
-    
-    .payment-form {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-    
-    .payment-select {
-      padding: 10px;
-      width: 100%;
-      max-width: 150px;
-      text-align: center;
-      margin-right: 10px;
-    }
-    
-    .payment-button {
-      color: #ffffff;
-      padding: 10px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
-      border: none;
-      font-weight: bold;
-    }
-    
-    .footer {
-      text-align: center;
-      font-style: italic;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="header">
-      <h1>Zahlung</h1>
-    </div>
-    
-    <div class="content">
-      <img class="profile-image" src="https://media.discordapp.net/attachments/701840860353921094/1104310800006524928/ProfilePictureMaker_28.png?width=701&height=701" alt="Profilbild">
-      <p>Hier kannst   du  uns  unterstützen!</p>
-      
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="payment-form">
-        <input type="hidden" name="cmd" value="_donations">
-        <input type="hidden" name="business" value="kevlevin.zev@gmail.com">
-        <input type="hidden" name="currency_code" value="EUR">
-        <input type="hidden" name="item_name" value="Spende">
-        <select name="amount" class="payment-select" onchange="changeButtonColor(this.value)">
-          <option value="0.00">0,00€</option>
-          <option value="0.25">0,25€</option>
-          <option value="0.50">0,50€</option>
-          <option value="1.00">1,00€</option>
-          <option value="2.50">2,50€</option>
-          <option value="5.00">5,00€</option>
-          <option value="10.00">10,00€</option>
-          <option value="15.00">15,00€</option>
-          <option value="25.00">25,00€</option>
-          <option value="50.00">50,00€</option>
-          <option value="75.00">75,00€</option>
-          <option value="100.00">100,00€</option>
-        </select>
-        <input type="submit" class="payment-button" value="Spenden">
-      </form>
-    </div>
-    
-    <div class="footer">
-      <p>Danke!</p>
-    </div>
-    
-    <script>
-      function changeButtonColor(amount) {
-        var button = document.querySelector('.payment-button');
-        var red = Math.floor(Math.random() * 256);
-        var green = Math.floor(Math.random() * 256);
-        var blue = Math.floor(Math.random() * 256);
-        
-        button.style.backgroundColor = "rgb(" + red + ", " + green + ", " + blue + ")";
-      }
-    </script>
-  </div>
-</body>
-</html>
+   
+  
+</body></html>
