@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s ease;
+        }
+
+        .container {
+            width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="email"],
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            color: black;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: white;
+            color: black;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .zevkev {
+            background-color: #b2d8e6;
+        }
+
+        .jamonhd {
+            background-color: #378a3d;
+        }
+
+        .teamzom {
+            background-color: #eaeaea;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        .error {
+            color: red;
+            margin-bottom: 10px;
+        }
+
+        .success {
+            color: green;
+            margin-bottom: 10px;
+        }
+
+        /* Dark mode styles */
+        .dark-mode {
+            background-color: #333;
+            color: white;
+        }
+
+        .dark-mode .container {
+            background-color: #222;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+
+        .dark-mode h1 {
+            color: white;
+        }
+
+        .dark-mode label {
+            color: white;
+        }
+
+        .dark-mode input[type="email"],
+        .dark-mode input[type="text"],
+        .dark-mode textarea {
+            background-color: #111;
+            color: white;
+        }
+
+        .dark-mode select {
+            background-color: #111;
+            color: white;
+        }
+
+        .dark-mode .btn {
+            background-color: #555;
+            color: white;
+        }
+
+        .dark-mode .btn:hover {
+            background-color: #777;
+        }
+
+        .dark-mode .error,
+        .dark-mode .success {
+            color: #ffdddd;
+        }
+
+        /* Dark mode colors for each person */
+        .dark-mode .zevkev {
+            background-color: #0f4c75;
+        }
+
+        .dark-mode .jamonhd {
+            background-color: #0f4c1e;
+        }
+
+        .dark-mode .teamzom {
+            background-color: #333333;
+        }
+
+        /* Dark mode toggle button */
+        .dark-mode-toggle {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .dark-mode-toggle:hover {
+            color: #bbb;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Kontaktformular</h1>
+        <div class="error" id="emailError"></div>
+        <div class="success" id="successMsg"></div>
+        <label for="recipientSelect">Empfänger:</label>
+        <select id="recipientSelect">
+            <option value="" disabled selected>Bitte Empfänger auswählen</option>
+            <option value="zevkev">Zevkev</option>
+            <option value="jamonhd">JamonHD</option>
+            <option value="teamzom">TeamZom</option>
+        </select>
+        <label for="emailInput">E-Mail:</label>
+        <input type="email" id="emailInput" placeholder="Ihre E-Mail-Adresse">
+        <label for="topicInput">Thema:</label>
+        <input type="text" id="topicInput" placeholder="Thema der Nachricht">
+        <label for="textInput">Nachricht:</label>
+        <textarea id="textInput" placeholder="Ihre Nachricht"></textarea>
+        <button id="sendMessageBtn" class="btn">Nachricht senden</button>
+    </div>
+
+    <!-- Dark mode toggle button -->
+    <div class="dark-mode-toggle" id="darkModeToggle" onclick="toggleDarkMode()">
+        ☀️
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog"
+        aria-labelledby="confirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmationModalLabel">Bestätigung</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="confirmationMessage"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+                    <button type="button" class="btn btn-primary" id="confirmSendBtn">Senden</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleDarkMode() {
+            $("body").toggleClass("dark-mode");
+            $("#darkModeToggle").html($("body").hasClass("dark-mode") ? "☀️" : "🌙");
+        }
+
+        $(document).ready(function () {
+            // Recipient selection change event
+            $("#recipientSelect").change(function () {
+                var recipient = $(this).val();
+                var body = $("body");
+
+                // Remove previous recipient class
+                body.removeClass("zevkev jamonhd teamzom");
+
+                // Add class based on selected recipient
+                if (recipient) {
+                    body.addClass(recipient);
+                }
+            });
+
+            // Send message button click event
+            $("#sendMessageBtn").click(function () {
+                var recipient = $("#recipientSelect").val();
+                var email = $("#emailInput").val();
+                var topic = $("#topicInput").val();
+                var message = $("#textInput").val();
+                var emailError = $("#emailError");
+
+                // Validate email
+                if (!validateEmail(email)) {
+                    emailError.text("Ungültige E-Mail-Adresse");
+                    return;
+                } else {
+                    emailError.text("");
+                }
+
+                // Confirmation modal
+                var confirmationMessage = `Empfänger: ${recipient}\n\nThema: ${topic}\nE-Mail: ${email}\nNachricht: ${message}`;
+                $("#confirmationMessage").text(confirmationMessage);
+                $("#confirmationModal").modal("show");
+            });
+
+            // Confirm send button click event
+            $("#confirmSendBtn").click(function () {
+                var recipient = $("#recipientSelect").val();
+                var email = $("#emailInput").val();
+                var topic = $("#topicInput").val();
+                var message = $("#textInput").val();
+                var webhookUrl = "";
+                var roleMention = "";
+
+                switch (recipient) {
+                    case "zevkev":
+                        webhookUrl = "https://discord.com/api/webhooks/1120369708340887633/ALatzQET3r9kAN-Al35-T0iztrbR0VjTef64wDFgAjSdtNqD800BtyeOxUFuhPzj_sJj";
+                        roleMention = "<@&1059910924036743290>";
+                        break;
+                    case "jamonhd":
+                        webhookUrl = "https://discord.com/api/webhooks/1120369989397008467/FwC1NlseWx0UaAQcpRL4BzZnoG9CB7-yRNDwiQBT44E48xmaljVO9jFTP9-VrKqE9deQ";
+                        roleMention = "<@&1100133065977761993>";
+                        break;
+                    case "teamzom":
+                        webhookUrl = "https://discord.com/api/webhooks/1120370149493592094/l8RtzT4E80j65aBwG24h3TFqWt8CqvXdomW5iG48XTia-o4343-Pm8hcuB3Tm1QecMKV";
+                        roleMention = "<@&1059910924036743288>";
+                        break;
+                }
+
+                if (webhookUrl !== "") {
+                    var messageData = {
+                        content: `${roleMention}\n\n------------------------\nThema: ${topic}\nE-Mail: ${email}\nNachricht: ${message}\n------------------------`
+                    };
+
+                    $.ajax({
+                        type: "POST",
+                        url: webhookUrl,
+                        data: JSON.stringify(messageData),
+                        contentType: "application/json",
+                        success: function () {
+                            $("#successMsg").text("Nachricht wurde gesendet.").fadeOut(3000);
+                        }
+                    });
+                }
+
+                // Clear form fields
+                $("#emailInput").val("");
+                $("#recipientSelect").val("").trigger("change");
+                $("#topicInput").val("");
+                $("#textInput").val("");
+
+                // Close confirmation modal
+                $("#confirmationModal").modal("hide");
+            });
+
+            // Email validation function
+            function validateEmail(email) {
+                var re = /\S+@\S+\.\S+/;
+                return re.test(email);
+            }
+        });
+    </script>
+</body>
+
+</html>
