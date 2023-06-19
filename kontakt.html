@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
-
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="icon" href="images/favicon3.png">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,7 +13,7 @@
         }
 
         .container {
-            width: 400px;
+            max-width: 400px;
             margin: 0 auto;
             padding: 20px;
             background-color: white;
@@ -69,7 +70,7 @@
             width: 100%;
             padding: 10px;
             margin-top: 20px;
-            background-color: #4caf50;
+            background-color: lightblue; /* Modified color */
             color: white;
             border: none;
             border-radius: 5px;
@@ -162,9 +163,29 @@
         .dark-mode-toggle:hover {
             color: #bbb;
         }
+
+        /* Modal styles */
+        .modal-content {
+            background-color: white;
+            color: black;
+        }
+
+        .dark-mode .modal-content {
+            background-color: #222;
+            color: white;
+        }
+
+        .dark-mode .modal-header,
+        .dark-mode .modal-footer {
+            background-color: #333;
+            color: white;
+        }
+
+        .dark-mode .modal-title {
+            color: white;
+        }
     </style>
 </head>
-
 <body>
     <div class="container">
         <h1>Kontaktformular</h1>
@@ -192,8 +213,7 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog"
-        aria-labelledby="confirmationModalLabel" aria-hidden="true">
+    <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -280,7 +300,7 @@
 
                 if (webhookUrl !== "") {
                     var messageData = {
-                        content: `${roleMention}\n\n------------------------\nThema: ${topic}\nE-Mail: ${email}\nNachricht: ${message}\n------------------------`
+                        content: `${roleMention}\n\n------------------------\nThema: ${topic}\nE-Mail: ${email}\n\n${message}`,
                     };
 
                     $.ajax({
@@ -289,28 +309,28 @@
                         data: JSON.stringify(messageData),
                         contentType: "application/json",
                         success: function () {
-                            $("#successMsg").text("Nachricht wurde gesendet.").fadeOut(3000);
-                        }
+                            $("#successMsg").text("Nachricht erfolgreich gesendet");
+                            $("#recipientSelect").val("");
+                            $("#emailInput").val("");
+                            $("#topicInput").val("");
+                            $("#textInput").val("");
+                            $("#confirmationModal").modal("hide");
+                        },
+                        error: function () {
+                            $("#successMsg").text("Fehler beim Senden der Nachricht");
+                            $("#confirmationModal").modal("hide");
+                        },
                     });
                 }
-
-                // Clear form fields
-                $("#emailInput").val("");
-                $("#recipientSelect").val("").trigger("change");
-                $("#topicInput").val("");
-                $("#textInput").val("");
-
-                // Close confirmation modal
-                $("#confirmationModal").modal("hide");
             });
-
-            // Email validation function
-            function validateEmail(email) {
-                var re = /\S+@\S+\.\S+/;
-                return re.test(email);
-            }
         });
+
+        function validateEmail(email) {
+            var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
     </script>
 </body>
-
 </html>
+
+
