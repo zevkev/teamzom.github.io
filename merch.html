@@ -1,47 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Embedded Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embedded Website Viewer</title>
     <style>
-        body, html {
+        body {
             margin: 0;
             padding: 0;
-            width: 100%;
-            height: 100%;
             overflow: hidden;
         }
-
-        .iframe-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio (9 / 16 * 100) */
-        }
-
-        iframe {
+        #iframe-container {
             position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             border: none;
         }
-
-        .return-button {
-            position: fixed;
-            bottom: 10px;
-            left: 10px;
-            background-color: #007bff;
+        #home-button {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background-color: #333;
             color: white;
-            padding: 10px 15px;
+            padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
+        #home-button i {
+            margin-right: 5px;
+        }
     </style>
 </head>
 <body>
-    <div class="iframe-container">
-        <iframe src="https://merch.streamelements.com/se-6857124"></iframe>
+    <div id="iframe-container">
+        <iframe id="website-iframe" src="https://store.streamelements.com/se-6857124" frameborder="0"></iframe>
     </div>
-    
-    <a class="return-button" href="https://teamzom.de/zevkev">Return to Home</a>
+    <button id="home-button">
+        <i class="fa fa-home"></i> Home
+    </button>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        const homeButton = document.getElementById('home-button');
+        const iframe = document.getElementById('website-iframe');
+
+        homeButton.addEventListener('click', () => {
+            iframe.src = 'https://store.streamelements.com/se-6857124';
+        });
+    </script>
 </body>
 </html>
