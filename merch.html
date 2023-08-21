@@ -1,54 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Embedded Website Viewer</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
-        #iframe-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        #home-button {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            background-color: #333;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        #home-button i {
-            margin-right: 5px;
-        }
-    </style>
+    <title>Embedded Website</title>
 </head>
 <body>
-    <div id="iframe-container">
-        <iframe id="website-iframe" src="https://store.streamelements.com/se-6857124" frameborder="0"></iframe>
-    </div>
-    <button id="home-button">
-        <i class="fa fa-home"></i> Home
-    </button>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <script>
-        const homeButton = document.getElementById('home-button');
-        const iframe = document.getElementById('website-iframe');
-
-        homeButton.addEventListener('click', () => {
-            iframe.src = 'https://store.streamelements.com/se-6857124';
-        });
-    </script>
+    <iframe src="https://merch.streamelements.com/se-6857124" width="100%" height="600"></iframe>
 </body>
 </html>
