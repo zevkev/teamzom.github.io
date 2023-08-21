@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uptime and Visitor Monitoring</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        #status {
+            font-weight: bold;
+        }
+
+        .status-online {
+            color: green;
+        }
+
+        .status-offline {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Website Uptime and Visitor Monitoring</h1>
+        <p>Status: <span id="status">Loading...</span></p>
+        <p>Current Visitors: <span id="visitors">0</span></p>
+    </div>
+    <script>
+        const password = prompt("Enter the password:");
+
+        if (password === "1324") {
+            checkStatusAndVisitors();
+            setInterval(checkStatusAndVisitors, 10000);
+        } else {
+            document.body.innerHTML = "<h1>Access Denied</h1>";
+        }
+
+        function checkStatusAndVisitors() {
+            fetch("check_status.php?password=" + password)
+                .then(response => response.json())
+                .then(data => {
+                    const statusElement = document.getElementById("status");
+                    const visitorsElement = document.getElementById("visitors");
+                    statusElement.textContent = data.status;
+                    visitorsElement.textContent = data.visitors;
+                    if (data.status === "Online") {
+                        statusElement.classList.remove("status-offline");
+                        statusElement.classList.add("status-online");
+                    } else {
+                        statusElement.classList.remove("status-online");
+                        statusElement.classList.add("status-offline");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    const statusElement = document.getElementById("status");
+                    statusElement.textContent = "Error";
+                    statusElement.classList.remove("status-online");
+                    statusElement.classList.add("status-offline");
+                });
+        }
+    </script>
+</body>
+</html>
