@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Impressum von ZevKev - Diese Seite gehört zu ZevKev.">
+    <meta property="og:title" content="Impressum von ZevKev">
+    <meta property="og:description" content="Impressum von ZevKev - Diese Seite gehört zu ZevKev.">
+    <meta property="og:image" content="https://static.thenounproject.com/png/92864-200.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="https://media.discordapp.net/attachments/701840860353921094/1143179674281852970/Logo_White.png" type="image/png">
     <title>Impressum</title>
@@ -15,7 +19,7 @@
             background-color: #e7feff;
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Georgia', serif;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -26,8 +30,8 @@
         .content-container {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            text-align: center;
+            align-items: flex-start;
+            text-align: left;
         }
 
         .impressum-box {
@@ -38,6 +42,7 @@
             max-width: 800px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
+            text-align: left;
         }
 
         .impressum-box h1 {
@@ -73,6 +78,12 @@
             transform: scale(1.05);
         }
 
+        .share-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
         .scroll-button {
             background-color: transparent;
             border: none;
@@ -103,6 +114,9 @@
       
         <div class="button-container">
             <a class="back-button" href="https://teamzom.de/zevkev">Zurück zu ZevKev</a>
+            <a href="https://teamzom.de/zevkev" target="_blank">
+                <img class="share-icon" src="https://static.thenounproject.com/png/92864-200.png" alt="Share Icon">
+            </a>
         </div>
     </div>
 
