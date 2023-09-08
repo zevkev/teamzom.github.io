@@ -1,5 +1,6 @@
  .u-section-1 {
   background-image: linear-gradient(#a3f0c2, white);
+  min-height: 1009px;
 }
 
 .u-section-1 .u-image-1 {
@@ -21,11 +22,11 @@
 
 .u-section-1 .u-list-1 {
   width: 1140px;
-  margin: 210px auto 60px;
+  margin: 246px auto 60px;
 }
 
 .u-section-1 .u-repeater-1 {
-  min-height: 406px;
+  min-height: 407px;
   grid-template-columns: 33.3333% 33.3333% 33.3333%;
   grid-gap: 0px 0px;
 }
@@ -113,6 +114,10 @@
 }
 
 @media (max-width: 991px) {
+   .u-section-1 {
+    min-height: 950px;
+  }
+
   .u-section-1 .u-image-1 {
     width: 720px;
     height: 243px;
