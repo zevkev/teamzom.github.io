@@ -137,7 +137,6 @@
   .u-section-1 .u-repeater-1 {
     min-height: 1143px;
     grid-template-columns: 100%;
-    grid-auto-columns: 100%;
   }
 
   .u-section-1 .u-container-layout-1 {
