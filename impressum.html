@@ -17,6 +17,9 @@
             background-color: #56beba;
             font-family: Arial, sans-serif;
             animation: backgroundChange 20s linear infinite;
+            position: relative;
+            overflow: hidden;
+            transition: background 3s;
         }
 
         @keyframes backgroundChange {
@@ -48,17 +51,36 @@
             text-align: center;
             max-width: 400px;
             margin: 0 auto;
+            transition: box-shadow 0.5s;
         }
+
         h1 {
             color: #4c6ef5;
             font-size: 24px;
         }
+
         p {
             font-size: 16px;
         }
+
         a {
             color: #4c6ef5;
             text-decoration: none;
+        }
+
+        /* Parallax-Effekt ohne Schatten */
+        body:hover {
+            background-attachment: fixed;
+            animation: wave 3s infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% {
+                background-position: 50% 0;
+            }
+            50% {
+                background-position: 50% 5%;
+            }
         }
     </style>
 </head>
@@ -77,16 +99,17 @@
         </div>
     </div>
     <script>
-        function randomColor() {
-            const colors = ["#56beba", "#4c6ef5", "#2e2d88", "#0000ff"];
-            return colors[Math.floor(Math.random() * colors.length)];
-        }
-
-        function changeBackground() {
-            document.body.style.backgroundColor = randomColor();
-        }
-
-        setInterval(changeBackground, 5000); // Ändere den Hintergrund alle 5 Sekunden
+        const box = document.querySelector('.impressum-box');
+        
+        // Verfolge die Mausposition und passe den Schatten an
+        document.addEventListener('mousemove', (e) => {
+            const offsetX = e.clientX - box.offsetLeft - box.offsetWidth / 2;
+            const offsetY = e.clientY - box.offsetTop - box.offsetHeight / 2;
+            const distance = Math.sqrt(offsetX * offsetX + offsetY * offsetY);
+            const shadowX = offsetX / distance * 10;
+            const shadowY = offsetY / distance * 10;
+            box.style.boxShadow = `${shadowX}px ${shadowY}px 20px rgba(0, 0, 0, 0.4)`;
+        });
     </script>
 </body>
 </html>
