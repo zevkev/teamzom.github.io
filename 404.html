@@ -4,57 +4,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://cdn.discordapp.com/attachments/973599267212111993/1148686636704604241/IMG-20230905-WA0035.jpg" type="image/jpeg">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <style>
         body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
             margin: 0;
-            background-color: #2c3e50;
-            font-family: "Raleway", sans-serif;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #56beba;
+            font-family: Arial, sans-serif;
+            animation: backgroundChange 30s linear infinite; /* Längere Animation für den Hintergrund */
+            position: relative;
+            overflow: hidden;
+            transition: background 3s;
+        }
+
+        @keyframes backgroundChange {
+            0% {
+                background-color: #56beba;
+            }
+            20% {
+                background-color: #4c6ef5;
+            }
+            40% {
+                background-color: #2e2d88;
+            }
+            60% {
+                background-color: #0000ff;
+            }
+            80% {
+                background-color: #56beba;
+            }
+            100% {
+                background-color: #4c6ef5;
+            }
+        }
+
+        .impressum-box {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Verbesserter Schatten nur für die Textbox */
+            text-align: center;
+            max-width: 80%; /* An die Bildschirmgröße anpassen */
+            transition: box-shadow 0.5s;
         }
 
         h1 {
-            font-size: 6vw; /* Smaller font size for "Seite nicht gefunden" */
-            color: #ffffff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: #4c6ef5;
+            font-size: 24px;
+        }
+
+        p {
+            font-size: 16px;
         }
 
         .button-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+            align-items: center;
             margin-top: 20px;
         }
 
+        .button-wrapper {
+            display: flex;
+        }
+
         .button {
-            background-color: #3498db;
+            background-color: #4c6ef5; /* Gleiche Hintergrundfarbe für alle Knöpfe */
             color: #ffffff;
-            font-size: 3vw;
+            font-size: 18px; /* Größere Schrift für die Schaltflächen */
             padding: 10px 20px;
             margin: 10px;
             border: none;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            border-radius: 25px;
+            border-radius: 10px; /* Geringerer Radius für die Schaltflächen */
             text-decoration: none;
         }
 
         .button:hover {
             background-color: #2980b9;
         }
+
+        .impressum-box:hover {
+            transition: box-shadow 0.5s;
+        }
+
+        .impressum-box:hover {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Verbesserter Schatten nur für die Textbox */
+        }
     </style>
 </head>
 <body>
-    <h1>404 - Seite nicht gefunden</h1>
-    <div class="button-container">
-    <a href="https://teamzom.de/zevkev" class="button">Zevkev</a>
-    <a href="https://teamzom.de/jamon" class="button">Jamon</a>
-    <a href="https://teamzom.de/teamzom" class="button">Teamzom</a>
-    <a href="https://teamzom.de/definitely" class="button">Definitely</a>
-</div>
+    <div class="impressum-box">
+        <h1>404 - Seite nicht gefunden</h1>
+        <p>Die angeforderte Seite wurde nicht gefunden.</p>
+        <div class="button-container">
+            <div class="button-wrapper">
+                <a href="https://teamzom.de/zevkev" class="button">Zevkev</a>
+                <a href="https://teamzom.de/jamon" class="button">Jamon</a>
+            </div>
+            <div class="button-wrapper">
+                <a href="https://teamzom.de/teamzom" class="button">Teamzom</a>
+                <a href="https://teamzom.de/definitely" class="button">Definitely</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
