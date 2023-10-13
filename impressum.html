@@ -14,11 +14,34 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            background-color: #4c6ef5;
+            background-color: #56beba;
             font-family: Arial, sans-serif;
+            animation: backgroundChange 20s linear infinite;
         }
+
+        @keyframes backgroundChange {
+            0% {
+                background-color: #56beba;
+            }
+            20% {
+                background-color: #4c6ef5;
+            }
+            40% {
+                background-color: #2e2d88;
+            }
+            60% {
+                background-color: #0000ff;
+            }
+            80% {
+                background-color: #56beba;
+            }
+            100% {
+                background-color: #4c6ef5;
+            }
+        }
+
         .impressum-box {
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.8);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -49,9 +72,21 @@
             E-Mail: <a href="mailto:kontakt.teamzom@gmail.com">kontakt.teamzom@gmail.com</a>
         </p>
         <p>Dieses Impressum gehört zu ZevKev</p>
-<div class="centered-div" style="text-align: center;">
-    <a href="https://teamzom.de/zevkev">Zurück zu ZevKev</a>
-</div>
+        <div class="centered-div" style="text-align: center;">
+            <a href="https://teamzom.de/zevkev">Zurück zu ZevKev</a>
+        </div>
+    </div>
+    <script>
+        function randomColor() {
+            const colors = ["#56beba", "#4c6ef5", "#2e2d88", "#0000ff"];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
 
+        function changeBackground() {
+            document.body.style.backgroundColor = randomColor();
+        }
+
+        setInterval(changeBackground, 5000); // Ändere den Hintergrund alle 5 Sekunden
+    </script>
 </body>
 </html>
