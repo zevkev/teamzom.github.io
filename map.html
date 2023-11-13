@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="3;url=http://193.135.10.37:8123/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="https://static.wikia.nocookie.net/minecraft_gamepedia/images/a/af/Apple_JE3_BE3.png/revision/latest?cb=20200519232834" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Minecraftia&display=swap">
+    <style>
+        body {
+            background: url('https://cdn.discordapp.com/attachments/701840860353921094/1173574003412176926/901517.png?ex=656472f6&is=6551fdf6&hm=8bdd8a5d315a49bd8039b2e687f25db1756c1dba66c4c27bfbcba67335732509'), linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+            background-repeat: repeat;
+            background-size: 70px; /* Adjust the size as needed */
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        #content-box {
+            background-color: #1f1f1f; /* Dark color like Minecraft */
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            text-align: center;
+        }
+        p {
+            font-size: 18px;
+            font-family: 'Minecraftia', sans-serif;
+            color: #fff;
+            margin: 0;
+        }
+        a {
+            color: #00ff00;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        #countdown {
+            font-size: 24px;
+            color: #00ff00;
+            margin-top: 10px;
+        }
+    </style>
+    <title>🍎 1.20.1 Survival Server Map 🍎</title>
+</head>
+<body>
+    <div id="content-box">
+        <p>Wenn du nicht automatisch weitergeleitet wirst, klicke <a href="http://193.135.10.37:8123/">hier</a>.</p>
+        <div id="countdown">Redirecting in 3 seconds...</div>
+    </div>
+
+    <script>
+        // Countdown Timer
+        let countdown = 3;
+        setInterval(() => {
+            countdown--;
+            document.getElementById('countdown').innerText = `Redirecting in ${countdown} seconds...`;
+        }, 1000);
+    </script>
+</body>
+</html>
