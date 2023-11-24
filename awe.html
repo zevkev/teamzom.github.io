@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dein Titel hier</title>
+    <meta property="og:title" content="AWE Stats">
+    <meta property="og:image" content="https://media.discordapp.net/attachments/701844352150011955/1177627808810401792/Discord_probe.png?ex=6573325c&is=6560bd5c&hm=872b6b8e7c9979fed8ab500691d12a97da8b4e6d32697c7e5f391870ecc4ce71&=&format=webp&width=702&height=702">
+    <title>AWE Stats</title>
     <link rel="icon" type="image/png" href="https://media.discordapp.net/attachments/701844352150011955/1177627808810401792/Discord_probe.png?ex=6573325c&is=6560bd5c&hm=872b6b8e7c9979fed8ab500691d12a97da8b4e6d32697c7e5f391870ecc4ce71&=&format=webp&width=702&height=702">
     <style>
         body {
@@ -133,7 +135,12 @@
             <input type="text" id="datum" placeholder="Datum">
             <label for="gewinner">Gewinner:</label>
             <input type="text" id="gewinner" placeholder="Gewinner">
+            <label for="loadSeed">AWE_ Seed:</label>
+            <input type="text" id="loadSeed" placeholder="Enter AWE_ seed to load">
+            <label for="saveSeed">AWE_ Save Seed:</label>
+            <input type="text" id="saveSeed" placeholder="Enter AWE_ seed to save" readonly>
             <button type="button" onclick="addStat()">Stat hinzufügen</button>
+            <button type="button" onclick="loadSave()">Load Save</button>
         </form>
         <div id="statsContainer"></div>
         <button id="removeButton" onclick="promptPasswordAndRemove()" disabled>Letzten Stat entfernen</button>
@@ -142,8 +149,10 @@
 
         <script>
             document.addEventListener('DOMContentLoaded', function () {
-                // Load stats from local storage
+                // Load stats from local storage using the loadSeed
                 loadStats();
+                // Generate and set a default saveSeed
+                generateAndSetSaveSeed();
             });
 
             function addStat() {
@@ -175,8 +184,9 @@
                         document.getElementById('names').value = '';
                         document.getElementById('datum').value = '';
                         document.getElementById('gewinner').value = '';
+                        document.getElementById('loadSeed').value = '';
 
-                        // Save stats to local storage
+                        // Save stats to local storage using the saveSeed
                         saveStats();
 
                         // Enable remove button
@@ -194,17 +204,28 @@
             }
 
             function saveStats() {
-                var statsContainer = document.getElementById('statsContainer').innerHTML;
-                localStorage.setItem('wweStats', statsContainer);
+                var statsData = {
+                    statsContainer: document.getElementById('statsContainer').innerHTML,
+                };
+
+                var seed = document.getElementById('saveSeed').value || generateSaveSeed();
+                localStorage.setItem(`AWE_${seed}`, JSON.stringify(statsData));
+                // Update the saveSeed input field with the new seed
+                document.getElementById('saveSeed').value = seed;
             }
 
             function loadStats() {
-                var savedStats = localStorage.getItem('wweStats');
-                if (savedStats) {
-                    document.getElementById('statsContainer').innerHTML = savedStats;
+                var seed = document.getElementById('loadSeed').value;
+                if (seed) {
+                    var savedStatsData = localStorage.getItem(`AWE_${seed}`);
+                    if (savedStatsData) {
+                        var statsData = JSON.parse(savedStatsData);
 
-                    // Enable remove button if there are stats
-                    document.getElementById('removeButton').disabled = savedStats.trim() === '';
+                        document.getElementById('statsContainer').innerHTML = statsData.statsContainer;
+
+                        // Enable remove button if there are stats
+                        document.getElementById('removeButton').disabled = statsData.statsContainer.trim() === '';
+                    }
                 }
             }
 
@@ -223,7 +244,7 @@
                 if (statItems.length > 0) {
                     statsContainer.removeChild(statItems[statItems.length - 1]);
 
-                    // Save stats to local storage
+                    // Save stats to local storage using the saveSeed
                     saveStats();
 
                     // Disable remove button if there are no stats
@@ -234,7 +255,24 @@
                     shareText.innerText = '';
                 }
             }
+
+            function generateSaveSeed() {
+                // Generate a saveSeed based on the current timestamp
+                return 'auto_' + Date.now();
+            }
+
+            function generateAndSetSaveSeed() {
+                // Generate and set a default saveSeed
+                var saveSeedInput = document.getElementById('saveSeed');
+                saveSeedInput.value = generateSaveSeed();
+            }
+
+            function loadSave() {
+                // Load stats when "Load Save" button is clicked
+                loadStats();
+            }
         </script>
     </div>
 </body>
 </html>
+
