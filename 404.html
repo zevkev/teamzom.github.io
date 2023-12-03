@@ -14,40 +14,28 @@
             min-height: 100vh;
             background-color: #56beba;
             font-family: Arial, sans-serif;
-            animation: backgroundChange 30s linear infinite; /* Längere Animation für den Hintergrund */
+            animation: backgroundChange 30s linear infinite;
             position: relative;
             overflow: hidden;
             transition: background 3s;
         }
 
         @keyframes backgroundChange {
-            0% {
-                background-color: #56beba;
-            }
-            20% {
-                background-color: #4c6ef5;
-            }
-            40% {
-                background-color: #2e2d88;
-            }
-            60% {
-                background-color: #0000ff;
-            }
-            80% {
-                background-color: #56beba;
-            }
-            100% {
-                background-color: #4c6ef5;
-            }
+            0% { background-color: #56beba; }
+            20% { background-color: #4c6ef5; }
+            40% { background-color: #2e2d88; }
+            60% { background-color: #0000ff; }
+            80% { background-color: #56beba; }
+            100% { background-color: #4c6ef5; }
         }
 
         .impressum-box {
             background-color: rgba(255, 255, 255, 0.8);
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Verbesserter Schatten nur für die Textbox */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
             text-align: center;
-            max-width: 80%; /* An die Bildschirmgröße anpassen */
+            max-width: 80%;
             transition: box-shadow 0.5s;
         }
 
@@ -73,15 +61,15 @@
         }
 
         .button {
-            background-color: #4c6ef5; /* Gleiche Hintergrundfarbe für alle Knöpfe */
+            background-color: #4c6ef5;
             color: #ffffff;
-            font-size: 18px; /* Größere Schrift für die Schaltflächen */
+            font-size: 18px;
             padding: 10px 20px;
             margin: 10px;
             border: none;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            border-radius: 10px; /* Geringerer Radius für die Schaltflächen */
+            border-radius: 10px;
             text-decoration: none;
         }
 
@@ -91,10 +79,7 @@
 
         .impressum-box:hover {
             transition: box-shadow 0.5s;
-        }
-
-        .impressum-box:hover {
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Verbesserter Schatten nur für die Textbox */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
@@ -109,25 +94,22 @@
             </div>
             <div class="button-wrapper">
                 <a href="https://teamzom.de/teamzom" class="button">Teamzom</a>
-                <a href="https://teamzom.de/definitely" class="button">Definitely</a>
             </div>
         </div>
     </div>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      const pageName = '404'; // Setze den Namen deiner Seite hier ein
+      const pageName = '404';
       const webhookURL = 'https://discord.com/api/webhooks/1180510042718470215/03X0fhLkRnCwuI5mym-cmpbSavbNZ5oWtPQxHBjEj4DrjHqwPEHfjI-NSKT3VKbhpPnS';
 
-      // Nachricht als Embed erstellen
       const embedMessage = {
         embeds: [{
           title: 'Seitenbesuch',
           description: `Jemand hat die Seite besucht: ${pageName}`,
-          color: 0x3498db, // Blaue Farbe (kann nach Bedarf geändert werden)
+          color: 0x3498db,
         }],
       };
 
-      // Nachricht an Discord senden
       fetch(webhookURL, {
         method: 'POST',
         headers: {
