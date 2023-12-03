@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InstantGaming</title>
+    <link rel="shortcut icon" href="instant-gaming-favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            background-color: #000;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function redirectToInstantGaming() {
+            window.location.href = "https://www.instant-gaming.com/de/?igr=ZevKev";
+        }
+    </script>
+</head>
+<body onload="redirectToInstantGaming()">
+    <button onclick="redirectToInstantGaming()">Zu Instant Gaming umleiten</button>
+</body>
+      <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const pageName = 'InstantGaming'; // Setze den Namen deiner Seite hier ein
+        const webhookURL = 'https://discord.com/api/webhooks/1180510042718470215/03X0fhLkRnCwuI5mym-cmpbSavbNZ5oWtPQxHBjEj4DrjHqwPEHfjI-NSKT3VKbhpPnS';
+  
+        // Nachricht als Embed erstellen
+        const embedMessage = {
+          embeds: [{
+            title: 'PartnerBesuch',
+            description: `Jemand hat die Seite besucht: ${pageName}`,
+            color: 0x3498db, // Blaue Farbe (kann nach Bedarf geändert werden)
+          }],
+        };
+  
+        // Nachricht an Discord senden
+        fetch(webhookURL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(embedMessage),
+        })
+        .then(response => console.log('Log an Discord gesendet'))
+        .catch(error => console.error('Fehler beim Senden des Logs an Discord:', error));
+      });
+    </script>
+</html>
