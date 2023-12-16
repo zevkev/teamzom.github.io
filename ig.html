@@ -58,24 +58,23 @@
 </body>
 </html>
 
-
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  function sendEmbedToDiscord() {
     const pageName = 'ZevKev: InstantGaming Partnerbesuch';
     const webhookURL = 'https://discord.com/api/webhooks/1180510042718470215/03X0fhLkRnCwuI5mym-cmpbSavbNZ5oWtPQxHBjEj4DrjHqwPEHfjI-NSKT3VKbhpPnS';
 
     // Choose a random joke about spending money on video games or looking at video games
     const jokes = [
-      'Warum hat der Computer kalt? Weil er Windows hat!',
-      'Warum haben Geister so schlechte Lügen? Weil man durch sie hindurchsehen kann!',
-      'Was sagt ein Informatiker, wenn er in den Wald geht? "Programmieren wir ein Baum"',
-      'Warum haben Programmierer eine schlechte Augen? Weil sie immer auf den Code schauen!',
-      'Warum war der Mathematikbuch traurig? Weil es zu viele Probleme hatte!',
-      'Wie nennt man einen Informatiker, der kein Fleisch isst? Ein Vegeta-Programmierer!',
-      'Warum hat der Programmierer schlechte Noten in der Schule? Weil er immer nur die Hälfte versteht!',
-      'Wie nennt man ein Informatiker auf dem Bauernhof? Ein Datenbauer!',
-      'Warum hat der Computer keinen Freunde? Weil er immer nur Daten analysiert!',
-      'Warum haben Programmierer immer kalte Hände? Weil sie nur im Code schreiben!'
+      'Warum hat der Gamer immer Durst? Weil er immer "keinen Mana" hat!',
+      'Wie nennt man einen Creeper, der explodiert? Ein dynamisches Problem!',
+      'Warum spielen Geister keine Videospiele? Weil sie nicht über die Tasten kichern können!',
+      'Was sagt ein Gamer, der im Casino gewinnt? "Easy Level Up!"',
+      'Warum sind Konsolen immer so schlecht gelaunt? Weil sie immer "Controller"-probleme haben!',
+      'Warum hat der Mario eine rote Mütze? Weil er sonst aussieht wie jeder andere Klempner!',
+      'Was sagt ein Tetris-Stein zum anderen? "Lass uns zusammenpassen und verschwinden!"',
+      'Warum hat der Pac-Man immer Angst? Weil er immer von Geistern verfolgt wird!',
+      'Wie nennt man einen schlechten Jäger? Noobhunter!',
+      'Warum hat der Zombie so schlechte Laune? Weil er immer aufstehen muss, nachdem er umgefallen ist!'
     ];
     const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
 
@@ -92,7 +91,13 @@
     const embedMessage = {
       embeds: [{
         title: 'Seitenbesuch',
-        description: randomJoke,
+        description: pageName,
+        fields: [
+          {
+            name: 'Gaming Witz',
+            value: randomJoke,
+          },
+        ],
         color: randomColor,
       }],
     };
@@ -107,7 +112,10 @@
     })
     .then(response => console.log('Log an Discord gesendet'))
     .catch(error => console.error('Fehler beim Senden des Logs an Discord:', error));
-  });
+  }
+
+  // Call the function when the page loads
+  document.addEventListener('DOMContentLoaded', sendEmbedToDiscord);
 </script>
 
 
