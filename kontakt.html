@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TeamZom Kontakt</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/701840860353921094/1185531910349393991/Email.png" sizes="16x16">
+
+  <!-- Meta Tags for SEO -->
+  <meta name="description" content="Kontaktseite für TeamZom">
+  <meta name="keywords" content="TeamZom, JamonHD Kontakt, ZevKev Kontakt, Kontaktformular">
+  <meta name="author" content="Dein Name oder TeamZom">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="TeamZom Kontakt">
+  <meta property="og:description" content="Kontaktseite für TeamZom">
+  <meta property="og:image" content="https://cdn.discordapp.com/attachments/701840860353921094/1185531910349393991/Email.png">
+  <meta property="og:url" content="URL_DEINER_SEITE">
+
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #aeeeff, #00aaff, #0088cc, #006699);
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .contact-form {
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      height: 100px;
+    }
+
+    button {
+      background-color: #006699;
+      color: #ffffff;
+      border: none;
+      padding: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #004466;
+    }
+  </style>
+</head>
+<body>
+  <div class="contact-form">
+    <h2>Kontaktformular</h2>
+    <form action="mailto:kontakt.teamzom@gmail.com" method="post" enctype="text/plain">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">E-Mail:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">Nachricht:</label>
+      <textarea id="message" name="message" required></textarea>
+
+      <button type="submit">Nachricht senden</button>
+    </form>
+  </div>
+</body>
+</html>
