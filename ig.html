@@ -61,63 +61,40 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const pageName = 'InstantGaming';
-    const siteOwner = 'ZevKev';
+    const pageName = 'ZevKev: InstantGaming Partnerbesuch';
     const webhookURL = 'https://discord.com/api/webhooks/1180510042718470215/03X0fhLkRnCwuI5mym-cmpbSavbNZ5oWtPQxHBjEj4DrjHqwPEHfjI-NSKT3VKbhpPnS';
 
-    // Arrays of bright orange, bright purple, and bright neon purple tones (hexadecimal color codes)
-    const brightOrangeTones = ['#FFA500', '#FF8C00', '#FF7F50', '#FF6347', '#FF4500', '#FF5733', '#F39C12', '#E67E22', '#D35400', '#B9770E'];
-    const brightPurpleTones = ['#800080', '#8B008B', '#9932CC', '#9400D3', '#8A2BE2', '#9B59B6', '#8E44AD', '#7D3C98', '#6A1B9A', '#4A235A'];
-    const brightNeonPurpleTones = ['#BA55D3', '#9932CC', '#9400D3', '#8A2BE2', '#9B59B6', '#8E44AD', '#7D3C98', '#6A1B9A', '#4A235A', '#8A2BE2'];
+    // Choose a random joke about spending money on video games or looking at video games
+    const jokes = [
+      'Warum hat der Computer kalt? Weil er Windows hat!',
+      'Warum haben Geister so schlechte Lügen? Weil man durch sie hindurchsehen kann!',
+      'Was sagt ein Informatiker, wenn er in den Wald geht? "Programmieren wir ein Baum"',
+      'Warum haben Programmierer eine schlechte Augen? Weil sie immer auf den Code schauen!',
+      'Warum war der Mathematikbuch traurig? Weil es zu viele Probleme hatte!',
+      'Wie nennt man einen Informatiker, der kein Fleisch isst? Ein Vegeta-Programmierer!',
+      'Warum hat der Programmierer schlechte Noten in der Schule? Weil er immer nur die Hälfte versteht!',
+      'Wie nennt man ein Informatiker auf dem Bauernhof? Ein Datenbauer!',
+      'Warum hat der Computer keinen Freunde? Weil er immer nur Daten analysiert!',
+      'Warum haben Programmierer immer kalte Hände? Weil sie nur im Code schreiben!'
+    ];
+    const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
 
-    // Function to randomly choose a color from an array
-    const chooseRandomColor = (colorArray) => colorArray[Math.floor(Math.random() * colorArray.length)];
-
-    // Function to randomly choose a German joke about buying games
-    const chooseRandomJoke = () => {
-      const jokes = [
-        'Warum hat der Gamer immer Geld? Weil er immer im Sale ist!',
-        'Was sagt der Gamer zur leeren Geldbörse? "Respawn!"',
-        'Warum kann der Gamer gut mit Geld umgehen? Er hat immer den Überblick über sein Inventar!',
-        'Wie nennt man einen Gamer ohne Geld? Game Over!',
-        'Was sagt der Gamer, wenn er sein Geld ausgibt? "Worth it!"',
-        'Warum hat der Gamer immer eine Kreditkarte dabei? Für den Highscore!',
-        'Wie nennt man es, wenn der Gamer sein ganzes Geld für Spiele ausgibt? Investition in die Glückseligkeit!',
-        'Warum hat der Gamer eine gute Bonität? Weil er immer pünktlich zum Release zahlt!',
-        'Was sagt der Gamer, wenn er beim Shoppen ist? "Add to Cart!"',
-        'Wie nennt man jemanden, der ständig neue Spiele kauft? DLC - Der Lieblings-Consumer!'
-      ];
-
-      return jokes[Math.floor(Math.random() * jokes.length)];
-    };
-
-    // Generate a random color for each category
-    const orangeColor = chooseRandomColor(brightOrangeTones);
-    const purpleColor = chooseRandomColor(brightPurpleTones);
-    const neonPurpleColor = chooseRandomColor(brightNeonPurpleTones);
-
-    // Generate a random German joke
-    const germanJoke = chooseRandomJoke();
+    // Choose a random Neon color
+    const neonColors = [
+      0xFFA500, 0xFFD700, 0xFF8C00, 0xFF6347, 0xFF4500, // Neon orange tones
+      0xFF69B4, 0xFFC0CB, 0xFF1493, 0xFF007F, 0xFF69B4, // Neon pink tones
+      0xFF0000, 0xFF6347, 0xFF4500, 0xDC143C, 0xB22222, // Neon red tones
+      0x800080, 0x9932CC, 0x9400D3, 0x8A2BE2, 0x800080  // Neon purple tones
+    ];
+    const randomColor = neonColors[Math.floor(Math.random() * neonColors.length)];
 
     // Nachricht als Embed erstellen
     const embedMessage = {
-      embeds: [
-        {
-          title: `${siteOwner} Partnerbesuch: ${pageName}`,
-          description: `${germanJoke}`,
-          color: parseInt(orangeColor.slice(1), 16),
-        },
-        {
-          title: `${siteOwner} Partnerbesuch: ${pageName}`,
-          description: `${germanJoke}`,
-          color: parseInt(purpleColor.slice(1), 16),
-        },
-        {
-          title: `${siteOwner} Partnerbesuch: ${pageName}`,
-          description: `${germanJoke}`,
-          color: parseInt(neonPurpleColor.slice(1), 16),
-        },
-      ],
+      embeds: [{
+        title: 'Seitenbesuch',
+        description: randomJoke,
+        color: randomColor,
+      }],
     };
 
     // Nachricht an Discord senden
@@ -128,11 +105,9 @@
       },
       body: JSON.stringify(embedMessage),
     })
-    .then(response => console.log('Log sent to Discord'))
-    .catch(error => console.error('Error sending log to Discord:', error));
+    .then(response => console.log('Log an Discord gesendet'))
+    .catch(error => console.error('Fehler beim Senden des Logs an Discord:', error));
   });
 </script>
 
-</body>
-</html>
 
