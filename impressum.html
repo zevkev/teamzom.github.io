@@ -110,31 +110,38 @@
         });
     </script>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const pageName = 'Impressum'; // Setze den Namen deiner Seite hier ein
-      const webhookURL = 'https://discord.com/api/webhooks/1180510042718470215/03X0fhLkRnCwuI5mym-cmpbSavbNZ5oWtPQxHBjEj4DrjHqwPEHfjI-NSKT3VKbhpPnS';
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const pageName = 'Impressum';
+    const webhookURL = 'https://discord.com/api/webhooks/1180510042718470215/03X0fhLkRnCwuI5mym-cmpbSavbNZ5oWtPQxHBjEj4DrjHqwPEHfjI-NSKT3VKbhpPnS';
 
-      // Nachricht als Embed erstellen
-      const embedMessage = {
-        embeds: [{
-          title: 'Seitenbesuch',
-          description: `Jemand hat die Seite besucht: ${pageName}`,
-          color: 0x3498db, // Blaue Farbe (kann nach Bedarf geändert werden)
-        }],
-      };
+    // Array of ten fitting brown tones (hexadecimal color codes)
+    const brownTones = ['#8B4513', '#A52A2A', '#CD853F', '#D2691E', '#DEB887', '#BC8F8F', '#D2B48C', '#8B6969', '#696969', '#8B4513'];
 
-      // Nachricht an Discord senden
-      fetch(webhookURL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(embedMessage),
-      })
-      .then(response => console.log('Log an Discord gesendet'))
-      .catch(error => console.error('Fehler beim Senden des Logs an Discord:', error));
-    });
-  </script>
+    // Randomly choose a brown tone from the array
+    const chosenBrownTone = brownTones[Math.floor(Math.random() * brownTones.length)];
+
+    // Nachricht als Embed erstellen
+    const embedMessage = {
+      embeds: [{
+        title: 'Impressum',
+        description: `Jemand hat die Seite besucht: ${pageName}`,
+        color: parseInt(chosenBrownTone.slice(1), 16), // Remove the '#' and convert to decimal
+      }],
+    };
+
+    // Nachricht an Discord senden
+    fetch(webhookURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(embedMessage),
+    })
+    .then(response => console.log('Log an Discord gesendet'))
+    .catch(error => console.error('Fehler beim Senden des Logs an Discord:', error));
+  });
+</script>
+
 </body>
 </html>
