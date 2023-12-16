@@ -59,24 +59,9 @@
 </html>
 
 <script>
-  function sendEmbedToDiscord() {
-    const pageName = 'ZevKev: InstantGaming Partnerbesuch';
+  document.addEventListener('DOMContentLoaded', function() {
+    const pageName = 'ZevKev InstantGaming Partnerbesuch';
     const webhookURL = 'https://discord.com/api/webhooks/1180510042718470215/03X0fhLkRnCwuI5mym-cmpbSavbNZ5oWtPQxHBjEj4DrjHqwPEHfjI-NSKT3VKbhpPnS';
-
-    // Choose a random joke about spending money on video games or looking at video games
-    const jokes = [
-      'Warum hat der Gamer immer Durst? Weil er immer "keinen Mana" hat!',
-      'Wie nennt man einen Creeper, der explodiert? Ein dynamisches Problem!',
-      'Warum spielen Geister keine Videospiele? Weil sie nicht über die Tasten kichern können!',
-      'Was sagt ein Gamer, der im Casino gewinnt? "Easy Level Up!"',
-      'Warum sind Konsolen immer so schlecht gelaunt? Weil sie immer "Controller"-probleme haben!',
-      'Warum hat der Mario eine rote Mütze? Weil er sonst aussieht wie jeder andere Klempner!',
-      'Was sagt ein Tetris-Stein zum anderen? "Lass uns zusammenpassen und verschwinden!"',
-      'Warum hat der Pac-Man immer Angst? Weil er immer von Geistern verfolgt wird!',
-      'Wie nennt man einen schlechten Jäger? Noobhunter!',
-      'Warum hat der Zombie so schlechte Laune? Weil er immer aufstehen muss, nachdem er umgefallen ist!'
-    ];
-    const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
 
     // Choose a random Neon color
     const neonColors = [
@@ -91,13 +76,7 @@
     const embedMessage = {
       embeds: [{
         title: 'Seitenbesuch',
-        description: pageName,
-        fields: [
-          {
-            name: 'Gaming Witz',
-            value: randomJoke,
-          },
-        ],
+        description: `Jemand hat die Seite besucht: ${pageName}`,
         color: randomColor,
       }],
     };
@@ -112,10 +91,7 @@
     })
     .then(response => console.log('Log an Discord gesendet'))
     .catch(error => console.error('Fehler beim Senden des Logs an Discord:', error));
-  }
-
-  // Call the function when the page loads
-  document.addEventListener('DOMContentLoaded', sendEmbedToDiscord);
+  });
 </script>
 
 
