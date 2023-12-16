@@ -1,38 +1,118 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weiterleitung...</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .container {
+      max-width: 600px;
+    }
+
+    .redirect-message {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+
+    .redirect-button {
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .redirect-button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <p class="redirect-message">Sie werden weitergeleitet...</p>
+    <script>
+      // JavaScript Weiterleitung
+      window.location.href = "https://www.instant-gaming.com/?igr=ZevKev";
+    </script>
+    <noscript>
+      <p>Wenn Sie nicht automatisch weitergeleitet werden, klicken Sie bitte auf den Button unten:</p>
+      <a href="https://www.instant-gaming.com/?igr=ZevKev" class="redirect-button">Jetzt weiterleiten</a>
+    </noscript>
+  </div>
+</body>
+</html>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const pageName = 'Instant Gaming Besuch';
+    const pageName = 'InstantGaming';
     const webhookURL = 'https://discord.com/api/webhooks/1180510042718470215/03X0fhLkRnCwuI5mym-cmpbSavbNZ5oWtPQxHBjEj4DrjHqwPEHfjI-NSKT3VKbhpPnS';
 
-    // Arrays of red, orange, and purple tones (hexadecimal color codes)
-    const redTones = ['#FF0000', '#B22222', '#DC143C', '#FF6347', '#FF4500', '#D9534F', '#E74C3C', '#C0392B', '#992D22', '#8B0000'];
-    const orangeTones = ['#FFA500', '#FF8C00', '#FF7F50', '#FF6347', '#FF4500', '#FF5733', '#F39C12', '#E67E22', '#D35400', '#B9770E'];
-    const purpleTones = ['#800080', '#8B008B', '#9932CC', '#9400D3', '#8A2BE2', '#9B59B6', '#8E44AD', '#7D3C98', '#6A1B9A', '#4A235A'];
+    // Arrays of bright orange, bright purple, and bright neon purple tones (hexadecimal color codes)
+    const brightOrangeTones = ['#FFA500', '#FF8C00', '#FF7F50', '#FF6347', '#FF4500', '#FF5733', '#F39C12', '#E67E22', '#D35400', '#B9770E'];
+    const brightPurpleTones = ['#800080', '#8B008B', '#9932CC', '#9400D3', '#8A2BE2', '#9B59B6', '#8E44AD', '#7D3C98', '#6A1B9A', '#4A235A'];
+    const brightNeonPurpleTones = ['#BA55D3', '#9932CC', '#9400D3', '#8A2BE2', '#9B59B6', '#8E44AD', '#7D3C98', '#6A1B9A', '#4A235A', '#8A2BE2'];
 
     // Function to randomly choose a color from an array
     const chooseRandomColor = (colorArray) => colorArray[Math.floor(Math.random() * colorArray.length)];
 
+    // Function to randomly choose a German joke about buying games
+    const chooseRandomJoke = () => {
+      const jokes = [
+        'Warum hat der Gamer immer Geld? Weil er immer im Sale ist!',
+        'Was sagt der Gamer zur leeren Geldbörse? "Respawn!"',
+        'Warum kann der Gamer gut mit Geld umgehen? Er hat immer den Überblick über sein Inventar!',
+        'Wie nennt man einen Gamer ohne Geld? Game Over!',
+        'Was sagt der Gamer, wenn er sein Geld ausgibt? "Worth it!"',
+        'Warum hat der Gamer immer eine Kreditkarte dabei? Für den Highscore!',
+        'Wie nennt man es, wenn der Gamer sein ganzes Geld für Spiele ausgibt? Investition in die Glückseligkeit!',
+        'Warum hat der Gamer eine gute Bonität? Weil er immer pünktlich zum Release zahlt!',
+        'Was sagt der Gamer, wenn er beim Shoppen ist? "Add to Cart!"',
+        'Wie nennt man jemanden, der ständig neue Spiele kauft? DLC - Der Lieblings-Consumer!'
+      ];
+
+      return jokes[Math.floor(Math.random() * jokes.length)];
+    };
+
     // Generate a random color for each category
-    const redColor = chooseRandomColor(redTones);
-    const orangeColor = chooseRandomColor(orangeTones);
-    const purpleColor = chooseRandomColor(purpleTones);
+    const orangeColor = chooseRandomColor(brightOrangeTones);
+    const purpleColor = chooseRandomColor(brightPurpleTones);
+    const neonPurpleColor = chooseRandomColor(brightNeonPurpleTones);
+
+    // Generate a random German joke
+    const germanJoke = chooseRandomJoke();
 
     // Nachricht als Embed erstellen
     const embedMessage = {
       embeds: [
         {
-          title: 'Partnerbesuch',
-          description: `Jemand hat die Seite besucht: ${pageName}`,
-          color: parseInt(redColor.slice(1), 16), // Remove the '#' and convert to decimal
-        },
-        {
-          title: 'Partnerbesuch',
-          description: `Jemand hat die Seite besucht: ${pageName}`,
+          title: 'ZevKev InstantGaming Partnerbesuch',
+          description: `${germanJoke} Jemand hat die Seite besucht: ${pageName}`,
           color: parseInt(orangeColor.slice(1), 16),
         },
         {
           title: 'Partnerbesuch',
-          description: `Jemand hat die Seite besucht: ${pageName}`,
+          description: `${germanJoke} Jemand hat die Seite besucht: ${pageName}`,
           color: parseInt(purpleColor.slice(1), 16),
+        },
+        {
+          title: 'Partnerbesuch',
+          description: `${germanJoke} Jemand hat die Seite besucht: ${pageName}`,
+          color: parseInt(neonPurpleColor.slice(1), 16),
         },
       ],
     };
@@ -45,12 +125,7 @@
       },
       body: JSON.stringify(embedMessage),
     })
-    .then(response => {
-      console.log('Log an Discord gesendet');
-      // Redirect to Instant Gaming after sending the embed
-      window.location.href = 'https://www.instant-gaming.com/';
-    })
-    .catch(error => console.error('Fehler beim Senden des Logs an Discord:', error));
+    .then(response => console.log('Log sent to Discord'))
+    .catch(error => console.error('Error sending log to Discord:', error));
   });
 </script>
-
