@@ -52,31 +52,35 @@
         <h5 class="u-align-center u-custom-font u-font-oswald u-text u-text-2"> TeamZom ist eine Gruppe von YouTubern, die zusammenarbeiten, um hochwertige YouTube-Videos zu erstellen. Unser Hauptziel besteht darin, uns gegenseitig zu unterstützen und unsere Fähigkeiten im Bereich Videoerstellung gegenseitig zu verbessern.</h5>
       </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const pageName = 'Menu'; // Setze den Namen deiner Seite hier ein
-      const webhookURL = 'https://discord.com/api/webhooks/1180510042718470215/03X0fhLkRnCwuI5mym-cmpbSavbNZ5oWtPQxHBjEj4DrjHqwPEHfjI-NSKT3VKbhpPnS';
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const pageName = 'Main';
+    const webhookURL = 'https://discord.com/api/webhooks/1180510042718470215/03X0fhLkRnCwuI5mym-cmpbSavbNZ5oWtPQxHBjEj4DrjHqwPEHfjI-NSKT3VKbhpPnS';
 
-      // Nachricht als Embed erstellen
-      const embedMessage = {
-        embeds: [{
-          title: 'Seitenbesuch',
-          description: `Jemand hat die Seite besucht: ${pageName}`,
-          color: 0x3498db, // Blaue Farbe (kann nach Bedarf geändert werden)
-        }],
-      };
+    // Generate a random rainbow color
+    const rainbowColor = Math.floor(Math.random()*16777215).toString(16);
 
-      // Nachricht an Discord senden
-      fetch(webhookURL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(embedMessage),
-      })
-      .then(response => console.log('Log an Discord gesendet'))
-      .catch(error => console.error('Fehler beim Senden des Logs an Discord:', error));
-    });
-  </script>
+    // Nachricht als Embed erstellen
+    const embedMessage = {
+      embeds: [{
+        title: 'Seitenbesuch',
+        description: `Jemand hat die Seite besucht: ${pageName}`,
+        color: parseInt(rainbowColor, 16),
+      }],
+    };
+
+    // Nachricht an Discord senden
+    fetch(webhookURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(embedMessage),
+    })
+    .then(response => console.log('Log an Discord gesendet'))
+    .catch(error => console.error('Fehler beim Senden des Logs an Discord:', error));
+  });
+</script>
+
   
 </body></html>
