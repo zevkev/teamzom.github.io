@@ -88,3 +88,33 @@
   </div>
 </body>
 </html>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const pageName = 'Kontakt';
+    const webhookURL = 'https://discord.com/api/webhooks/1180510042718470215/03X0fhLkRnCwuI5mym-cmpbSavbNZ5oWtPQxHBjEj4DrjHqwPEHfjI-NSKT3VKbhpPnS';
+
+    // Generate a random rainbow color
+    const rainbowColor = Math.floor(Math.random()*16777215).toString(16);
+
+    // Nachricht als Embed erstellen
+    const embedMessage = {
+      embeds: [{
+        title: 'Kontakt',
+        description: `Jemand hat die Seite besucht: ${pageName}`,
+        color: parseInt(rainbowColor, 16),
+      }],
+    };
+
+    // Nachricht an Discord senden
+    fetch(webhookURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(embedMessage),
+    })
+    .then(response => console.log('Log an Discord gesendet'))
+    .catch(error => console.error('Fehler beim Senden des Logs an Discord:', error));
+  });
+</script>
+
