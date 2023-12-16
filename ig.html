@@ -48,50 +48,52 @@
     <p class="redirect-message">Sie werden weitergeleitet...</p>
     <script>
       // JavaScript Weiterleitung
-      window.location.href = "https://www.instant-gaming.com/?igr=ZevKev";
+      setTimeout(function() {
+        window.location.href = "https://www.instant-gaming.com/?igr=ZevKev";
+      }, 250); // Redirect after ... second
     </script>
     <noscript>
       <p>Wenn Sie nicht automatisch weitergeleitet werden, klicken Sie bitte auf den Button unten:</p>
       <a href="https://www.instant-gaming.com/?igr=ZevKev" class="redirect-button">Jetzt weiterleiten</a>
     </noscript>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const pageName = 'ZevKev InstantGaming Partnerbesuch';
+      const webhookURL = 'https://discord.com/api/webhooks/1180510042718470215/03X0fhLkRnCwuI5mym-cmpbSavbNZ5oWtPQxHBjEj4DrjHqwPEHfjI-NSKT3VKbhpPnS';
+
+      // Choose a random Neon color
+      const neonColors = [
+        0xFFA500, 0xFFD700, 0xFF8C00, 0xFF6347, 0xFF4500, // Neon orange tones
+        0xFF69B4, 0xFFC0CB, 0xFF1493, 0xFF007F, 0xFF69B4, // Neon pink tones
+        0xFF0000, 0xFF6347, 0xFF4500, 0xDC143C, 0xB22222, // Neon red tones
+        0x800080, 0x9932CC, 0x9400D3, 0x8A2BE2, 0x800080  // Neon purple tones
+      ];
+      const randomColor = neonColors[Math.floor(Math.random() * neonColors.length)];
+
+      // Nachricht als Embed erstellen
+      const embedMessage = {
+        embeds: [{
+          title: 'Seitenbesuch',
+          description: `Jemand hat die Seite besucht: ${pageName}`,
+          color: randomColor,
+        }],
+      };
+
+      // Nachricht an Discord senden
+      fetch(webhookURL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(embedMessage),
+      })
+      .then(response => console.log('Log an Discord gesendet'))
+      .catch(error => console.error('Fehler beim Senden des Logs an Discord:', error));
+    });
+  </script>
 </body>
 </html>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const pageName = 'ZevKev InstantGaming Partnerbesuch';
-    const webhookURL = 'https://discord.com/api/webhooks/1180510042718470215/03X0fhLkRnCwuI5mym-cmpbSavbNZ5oWtPQxHBjEj4DrjHqwPEHfjI-NSKT3VKbhpPnS';
-
-    // Choose a random Neon color
-    const neonColors = [
-      0xFFA500, 0xFFD700, 0xFF8C00, 0xFF6347, 0xFF4500, // Neon orange tones
-      0xFF69B4, 0xFFC0CB, 0xFF1493, 0xFF007F, 0xFF69B4, // Neon pink tones
-      0xFF0000, 0xFF6347, 0xFF4500, 0xDC143C, 0xB22222, // Neon red tones
-      0x800080, 0x9932CC, 0x9400D3, 0x8A2BE2, 0x800080  // Neon purple tones
-    ];
-    const randomColor = neonColors[Math.floor(Math.random() * neonColors.length)];
-
-    // Nachricht als Embed erstellen
-    const embedMessage = {
-      embeds: [{
-        title: 'Seitenbesuch',
-        description: `Jemand hat die Seite besucht: ${pageName}`,
-        color: randomColor,
-      }],
-    };
-
-    // Nachricht an Discord senden
-    fetch(webhookURL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(embedMessage),
-    })
-    .then(response => console.log('Log an Discord gesendet'))
-    .catch(error => console.error('Fehler beim Senden des Logs an Discord:', error));
-  });
-</script>
 
 
