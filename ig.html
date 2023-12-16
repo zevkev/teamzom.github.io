@@ -27,35 +27,55 @@
         function redirectToInstantGaming() {
             window.location.href = "https://www.instant-gaming.com/de/?igr=ZevKev";
         }
-    </script>
-</head>
-<body onload="redirectToInstantGaming()">
-    <button onclick="redirectToInstantGaming()">Zu Instant Gaming umleiten</button>
-</body>
-      <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const pageName = 'InstantGaming'; // Setze den Namen deiner Seite hier ein
-        const webhookURL = 'https://discord.com/api/webhooks/1180510042718470215/03X0fhLkRnCwuI5mym-cmpbSavbNZ5oWtPQxHBjEj4DrjHqwPEHfjI-NSKT3VKbhpPnS';
-  
-        // Nachricht als Embed erstellen
-        const embedMessage = {
-          embeds: [{
-            title: 'PartnerBesuch',
-            description: `Jemand hat die Seite besucht: ${pageName}`,
-            color: 0x3498db, // Blaue Farbe (kann nach Bedarf geändert werden)
-          }],
-        };
-  
-        // Nachricht an Discord senden
-        fetch(webhookURL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(embedMessage),
-        })
-        .then(response => console.log('Log an Discord gesendet'))
-        .catch(error => console.error('Fehler beim Senden des Logs an Discord:', error));
-      });
-    </script>
-</html>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const pageName = 'Instant Gaming Besuch';
+    const webhookURL = 'https://discord.com/api/webhooks/1180510042718470215/03X0fhLkRnCwuI5mym-cmpbSavbNZ5oWtPQxHBjEj4DrjHqwPEHfjI-NSKT3VKbhpPnS';
+
+    // Arrays of red, orange, and purple tones (hexadecimal color codes)
+    const redTones = ['#FF0000', '#B22222', '#DC143C', '#FF6347', '#FF4500', '#D9534F', '#E74C3C', '#C0392B', '#992D22', '#8B0000'];
+    const orangeTones = ['#FFA500', '#FF8C00', '#FF7F50', '#FF6347', '#FF4500', '#FF5733', '#F39C12', '#E67E22', '#D35400', '#B9770E'];
+    const purpleTones = ['#800080', '#8B008B', '#9932CC', '#9400D3', '#8A2BE2', '#9B59B6', '#8E44AD', '#7D3C98', '#6A1B9A', '#4A235A'];
+
+    // Function to randomly choose a color from an array
+    const chooseRandomColor = (colorArray) => colorArray[Math.floor(Math.random() * colorArray.length)];
+
+    // Generate a random color for each category
+    const redColor = chooseRandomColor(redTones);
+    const orangeColor = chooseRandomColor(orangeTones);
+    const purpleColor = chooseRandomColor(purpleTones);
+
+    // Nachricht als Embed erstellen
+    const embedMessage = {
+      embeds: [
+        {
+          title: 'Partnerbesuch',
+          description: `Jemand hat die Seite besucht: ${pageName}`,
+          color: parseInt(redColor.slice(1), 16), // Remove the '#' and convert to decimal
+        },
+        {
+          title: 'Partnerbesuch',
+          description: `Jemand hat die Seite besucht: ${pageName}`,
+          color: parseInt(orangeColor.slice(1), 16),
+        },
+        {
+          title: 'Partnerbesuch',
+          description: `Jemand hat die Seite besucht: ${pageName}`,
+          color: parseInt(purpleColor.slice(1), 16),
+        },
+      ],
+    };
+
+    // Nachricht an Discord senden
+    fetch(webhookURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(embedMessage),
+    })
+    .then(response => console.log('Log an Discord gesendet'))
+    .catch(error => console.error('Fehler beim Senden des Logs an Discord:', error));
+  });
+</script>
+
