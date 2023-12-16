@@ -57,9 +57,12 @@
   </div>
 </body>
 </html>
+
+
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const pageName = 'InstantGaming';
+    const siteOwner = 'ZevKev';
     const webhookURL = 'https://discord.com/api/webhooks/1180510042718470215/03X0fhLkRnCwuI5mym-cmpbSavbNZ5oWtPQxHBjEj4DrjHqwPEHfjI-NSKT3VKbhpPnS';
 
     // Arrays of bright orange, bright purple, and bright neon purple tones (hexadecimal color codes)
@@ -100,18 +103,18 @@
     const embedMessage = {
       embeds: [
         {
-          title: 'ZevKev InstantGaming Partnerbesuch',
-          description: `${germanJoke} Jemand hat die Seite besucht: ${pageName}`,
+          title: `${siteOwner} Partnerbesuch: ${pageName}`,
+          description: `${germanJoke}`,
           color: parseInt(orangeColor.slice(1), 16),
         },
         {
-          title: 'Partnerbesuch',
-          description: `${germanJoke} Jemand hat die Seite besucht: ${pageName}`,
+          title: `${siteOwner} Partnerbesuch: ${pageName}`,
+          description: `${germanJoke}`,
           color: parseInt(purpleColor.slice(1), 16),
         },
         {
-          title: 'Partnerbesuch',
-          description: `${germanJoke} Jemand hat die Seite besucht: ${pageName}`,
+          title: `${siteOwner} Partnerbesuch: ${pageName}`,
+          description: `${germanJoke}`,
           color: parseInt(neonPurpleColor.slice(1), 16),
         },
       ],
@@ -129,3 +132,7 @@
     .catch(error => console.error('Error sending log to Discord:', error));
   });
 </script>
+
+</body>
+</html>
+
