@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Das Offizielle Merch von ZevKev; Jetzt NEU! Doodle Merch🎨!">
+    <meta name="description" content="Das Offizielle Merch von ZevKev; Jetzt NEUE DESIGNS!">
     <meta name="keywords" content="ZevKev, ZevKev merch, TeamZom, Merchandise">
     <meta name="author" content="ZevKev">
     <meta name="robots" content="index,follow">
     <meta name="language" content="Deutsch">
     <meta property="og:title" content="ZevKev Merchandising">
     <meta property="og:description" content="Das Offizielle Merch von ZevKev; Jetzt NEU! Doodle Merch!">
-    <meta property="og:image" content="https://cdn.discordapp.com/attachments/701840860353921094/1156280512596426762/Merch.png">
+    <meta property="og:image" content="https://cdn.discordapp.com/attachments/701840860353921094/1186321444347576400/Floppy_Hoodie.png?ex=6592d2f1&is=65805df1&hm=c18fca7f329de1d976a5c460f7bb14fdaf383ff4a7fa7d2c51437dcaaeca08b5&">
     <meta property="og:image:width" content="1980"> <!-- Set the desired image width -->
     <meta property="og:image:height" content="1080"> <!-- Set the desired image height -->
     <title>ZevKev Merchandise</title>
@@ -23,3 +23,29 @@
     <p>Wenn du nicht weitergeleitet wirst, <a href="https://store.streamelements.com/se-6857124">klick hier</a>.</p>
 </body>
 </html>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const pageName = 'Merch';
+    const webhookURL = 'https://discord.com/api/webhooks/1180510042718470215/03X0fhLkRnCwuI5mym-cmpbSavbNZ5oWtPQxHBjEj4DrjHqwPEHfjI-NSKT3VKbhpPnS';
+
+    // Nachricht als Embed erstellen
+    const embedMessage = {
+      embeds: [{
+        title: 'Seitenbesuch',
+        description: `Jemand hat die Seite besucht: ${pageName}`,
+        color: 0x00ced1, // Light turquoise color
+      }],
+    };
+
+    // Nachricht an Discord senden
+    fetch(webhookURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(embedMessage),
+    })
+    .then(response => console.log('Log an Discord gesendet'))
+    .catch(error => console.error('Fehler beim Senden des Logs an Discord:', error));
+  });
+</script>
