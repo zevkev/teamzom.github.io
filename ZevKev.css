@@ -1193,19 +1193,13 @@
 
 @media (max-width: 575px) {
   .u-section-3 .u-sheet-1 {
-    min-height: 993px;
+    min-height: 1857px;
   }
 
   .u-section-3 .u-image-1 {
     height: 129px;
     margin-top: -64px;
     width: auto;
-    margin-right: initial;
-    margin-left: initial;
-  }
-
-  .u-section-3 .u-tabs-1 {
-    margin-bottom: 20px;
     margin-right: initial;
     margin-left: initial;
   }
