@@ -225,9 +225,9 @@
 }
 
 .u-section-1 .u-gallery-4 {
-  height: 300px;
   grid-gap: 17px 17px;
   width: 100%;
+  height: 400px;
   margin: 0 auto 0 0;
 }
 
@@ -342,7 +342,8 @@
   }
 
   .u-section-1 .u-gallery-4 {
-    height: 1149px;
+    height: 750px;
+    width: 650px;
   }
 
   .u-section-1 .u-gallery-inner-4 {
@@ -420,7 +421,8 @@
   }
 
   .u-section-1 .u-gallery-4 {
-    height: 4126px;
+    width: 520px;
+    height: 1840px;
   }
 
   .u-section-1 .u-gallery-inner-4 {
@@ -474,9 +476,9 @@
   }
 
   .u-section-1 .u-gallery-4 {
-    height: 1000px;
     width: 325px;
     margin-right: 0;
+    height: 1145px;
   }
 }.u-section-2 .u-sheet-1 {
   min-height: 407px;
