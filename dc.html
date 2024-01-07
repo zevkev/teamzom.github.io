@@ -5,42 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            background-color: black;
+            background-color: #333;
             color: white;
             font-family: Arial, sans-serif;
             text-align: center;
             padding: 50px;
+            margin: 0;
         }
 
-        #redirectButton {
-            padding: 10px 20px;
-            font-size: 16px;
+        #redirectInstructions {
+            margin-bottom: 20px;
+        }
+
+        #redirectButton1, #redirectButton2 {
+            padding: 15px 30px;
+            font-size: 18px;
             background-color: #7289da;
             color: white;
             border: none;
             cursor: pointer;
+            margin: 10px;
         }
     </style>
     <title>Discord Redirect</title>
 </head>
 <body>
-    <p>Klicke auf den unten stehenden Button, um den ersten Discord-Server zu öffnen. Der aktuelle Tab wird nach einer kurzen Verzögerung zum zweiten Discord-Server weitergeleitet.</p>
+    <p id="redirectInstructions">Klicke auf die unten stehenden Buttons, um die Discord-Server zu öffnen. Falls die automatische Öffnung blockiert wird, öffne sie manuell.</p>
     
-    <button id="redirectButton" onclick="openFirstServer()">Öffne den ersten Discord-Server</button>
+    <button id="redirectButton1" onclick="openDiscordServer('https://discord.com/invite/PkAR44WJnx')">Öffne Discord Server 1</button>
+    <button id="redirectButton2" onclick="openDiscordServer('https://discord.com/invite/93c6EbsSYQ')">Öffne Discord Server 2</button>
 
     <script>
-        function openFirstServer() {
-            // Öffne den ersten Discord-Server in einem neuen Tab
-            var newTab = window.open('https://discord.com/invite/PkAR44WJnx', '_blank');
-
-            // Leite den aktuellen Tab zum zweiten Discord-Server weiter
-            setTimeout(function() {
-                window.location.replace("https://discord.com/invite/93c6EbsSYQ");
-            }, 1000); // Hier 1000 Millisekunden (1 Sekunde) als Beispiel, ändere dies nach Bedarf
+        function openDiscordServer(url) {
+            // Öffne den Discord-Server in einem neuen Tab
+            var newTab = window.open(url, '_blank');
 
             // Überprüfe, ob der neue Tab erfolgreich geöffnet wurde
             if (!newTab) {
-                alert("Dein Popup-Blocker hat die automatische Öffnung des neuen Tabs blockiert. Bitte öffne den ersten Discord-Server manuell.");
+                alert("Dein Popup-Blocker hat die automatische Öffnung des neuen Tabs blockiert. Bitte öffne den Discord-Server manuell.");
             }
         }
     </script>
