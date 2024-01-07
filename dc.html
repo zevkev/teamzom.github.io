@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            // Öffne einen neuen Tab für den ersten Discord-Server
+            window.open('https://discord.com/invite/PkAR44WJnx', '_blank');
+
+            // Leite den aktuellen Tab zum zweiten Discord-Server weiter
+            setTimeout(function() {
+                window.location.replace("https://discord.com/invite/93c6EbsSYQ");
+            }, 1000); // Hier 1000 Millisekunden (1 Sekunde) als Beispiel, ändere dies nach Bedarf
+        };
+    </script>
+    <title>Discord Redirect</title>
+</head>
+<body>
+    <p>Wird zu beiden Discord-Servern gleichzeitig umgeleitet...</p>
+</body>
+</html>
