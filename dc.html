@@ -9,8 +9,18 @@
             color: white;
             font-family: Arial, sans-serif;
             text-align: center;
-            padding: 50px;
+            padding: 0;
             margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #redirectContainer {
+            background-color: #444;
+            padding: 30px;
+            border-radius: 10px;
         }
 
         #redirectInstructions {
@@ -30,20 +40,39 @@
     <title>Discord Redirect</title>
 </head>
 <body>
-    <p id="redirectInstructions">Klicke auf die unten stehenden Buttons, um die Discord-Server zu öffnen. Falls die automatische Öffnung blockiert wird, öffne sie manuell.</p>
-    
-    <button id="redirectButton1" onclick="openDiscordServer('https://discord.com/invite/PkAR44WJnx')">Öffne Discord Server 1</button>
-    <button id="redirectButton2" onclick="openDiscordServer('https://discord.com/invite/93c6EbsSYQ')">Öffne Discord Server 2</button>
+    <div id="redirectContainer">
+        <p id="redirectInstructions">Automatische Öffnung der Discord-Server alle 3 Sekunden. Klicke auf die unten stehenden Buttons, um die Discord-Server manuell zu öffnen.</p>
+        
+        <button id="redirectButton1" onclick="openDiscordServer('https://discord.com/invite/PkAR44WJnx')">Öffne Discord Server 1</button>
+        <button id="redirectButton2" onclick="openDiscordServer('https://discord.com/invite/93c6EbsSYQ')">Öffne Discord Server 2</button>
+    </div>
 
     <script>
+        var attempts = 0;
+        var maxAttempts = 5; // Maximale Anzahl an Versuchen, die automatische Öffnung fortzusetzen
+
         function openDiscordServer(url) {
             // Öffne den Discord-Server in einem neuen Tab
             var newTab = window.open(url, '_blank');
 
             // Überprüfe, ob der neue Tab erfolgreich geöffnet wurde
             if (!newTab) {
-                alert("Dein Popup-Blocker hat die automatische Öffnung des neuen Tabs blockiert. Bitte öffne den Discord-Server manuell.");
+                attempts++;
+                if (attempts < maxAttempts) {
+                    // Falls nicht erfolgreich und Anzahl der Versuche nicht überschritten, versuche es erneut alle 3 Sekunden
+                    setTimeout(function() {
+                        openDiscordServer(url);
+                    }, 3000);
+                } else {
+                    // Falls die maximale Anzahl an Versuchen überschritten wurde, leite automatisch weiter
+                    alert("Automatische Öffnung wurde blockiert. Du wirst nun automatisch weitergeleitet.");
+                    redirectToSecondServer();
+                }
             }
+        }
+
+        function redirectToSecondServer() {
+            window.location.replace("https://discord.com/invite/93c6EbsSYQ");
         }
     </script>
 </body>
