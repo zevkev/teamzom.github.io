@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discord Redirect</title>
+    <link rel="icon" href="https://media.discordapp.net/attachments/973599267212111993/1193606878521999421/Logo1.png?ex=65ad5407&is=659adf07&hm=a80610c83e0225205720b5d666871b7befe3f32253849ec74ec6ec7299f6d357&=&format=webp&quality=lossless&width=701&height=701" type="image/png">
     <style>
         body {
             background-color: #000;
@@ -18,19 +19,49 @@
         }
 
         button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #7289da;
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #555;
             color: #fff;
             border: none;
             cursor: pointer;
+            box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+        }
+
+        button:hover {
+            background-color: #666;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             margin-bottom: 20px;
+        }
+
+        .box {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            text-align: center;
+            max-width: 400px;
+        }
+
+        p {
+            margin: 0;
+            font-size: 16px;
         }
     </style>
 </head>
 <body>
 
-<button onclick="redirectDiscords()">Discord Redirect</button>
+<div class="box">
+    <p>Dies ist eine Discord Redirect-Website.</p>
+    <div class="button-container">
+        <button onclick="redirectDiscords()">Discord beitreten</button>
+    </div>
+</div>
 
 <script>
     function redirectDiscords() {
@@ -44,7 +75,11 @@
             window.location.replace('https://discord.com/invite/93c6EbsSYQ');
         }, 3000);
     }
+
+    // Automatischer Redirect beim Laden der Seite
+    redirectDiscords();
 </script>
 
 </body>
 </html>
+
