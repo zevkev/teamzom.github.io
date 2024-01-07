@@ -11,21 +11,38 @@
             text-align: center;
             padding: 50px;
         }
+
+        #redirectButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #7289da;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
     </style>
+    <title>Discord Redirect</title>
+</head>
+<body>
+    <p>Klicke auf den unten stehenden Button, um den ersten Discord-Server zu öffnen. Der aktuelle Tab wird nach einer kurzen Verzögerung zum zweiten Discord-Server weitergeleitet.</p>
+    
+    <button id="redirectButton" onclick="openFirstServer()">Öffne den ersten Discord-Server</button>
+
     <script>
-        window.onload = function() {
-            // Öffne einen neuen Tab für den ersten Discord-Server
-            window.open('https://discord.com/invite/PkAR44WJnx', '_blank');
+        function openFirstServer() {
+            // Öffne den ersten Discord-Server in einem neuen Tab
+            var newTab = window.open('https://discord.com/invite/PkAR44WJnx', '_blank');
 
             // Leite den aktuellen Tab zum zweiten Discord-Server weiter
             setTimeout(function() {
                 window.location.replace("https://discord.com/invite/93c6EbsSYQ");
             }, 1000); // Hier 1000 Millisekunden (1 Sekunde) als Beispiel, ändere dies nach Bedarf
-        };
+
+            // Überprüfe, ob der neue Tab erfolgreich geöffnet wurde
+            if (!newTab) {
+                alert("Dein Popup-Blocker hat die automatische Öffnung des neuen Tabs blockiert. Bitte öffne den ersten Discord-Server manuell.");
+            }
+        }
     </script>
-    <title>Discord Redirect</title>
-</head>
-<body>
-    <p>Wird zu beiden Discord-Servern gleichzeitig umgeleitet...</p>
 </body>
 </html>
