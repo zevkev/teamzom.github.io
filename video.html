@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirect to Latest Video</title>
+</head>
+<body>
+
+<script>
+    function redirectToLatestVideo_ZevKev() {
+        redirectToLatestVideo("ZevKev");
+    }
+
+    function redirectToLatestVideo_JamonHD() {
+        redirectToLatestVideo("jamon_hd");
+    }
+
+    function redirectToLatestVideo_TeamZom() {
+        redirectToLatestVideo("TeamZom");
+    }
+
+    function redirectToLatestVideo(channelUsername) {
+        // Construct the URL for the channel's main page
+        var channelUrl = "https://www.youtube.com/" + channelUsername;
+
+        // Fetch the channel's main page
+        fetch(channelUrl)
+            .then(response => response.text())
+            .then(data => {
+                // Use regular expressions to extract the latest video URL
+                var match = data.match(/"videoId":"([^"]+)"/);
+                if (match) {
+                    var videoId = match[1];
+                    var latestVideoUrl = "https://www.youtube.com/watch?v=" + videoId;
+
+                    // Redirect to the latest video URL
+                    window.location.href = latestVideoUrl;
+                } else {
+                    console.error('Failed to find the latest video for ' + channelUsername);
+                }
+            })
+            .catch(error => console.error('Error fetching channel page:', error));
+    }
+
+    // Redirect to the latest video for each specified channel
+    redirectToLatestVideo_ZevKev();
+    redirectToLatestVideo_JamonHD();
+    redirectToLatestVideo_TeamZom();
+</script>
+
+</body>
+</html>
