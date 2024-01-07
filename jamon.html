@@ -5,9 +5,9 @@
     <meta name="keywords" content="TeamZom,  TeamZom  Disocrd,  ZevKev, ">
     <meta name="description" content="Hey, mein Name ist Kev📍
 Hier findest du alle meine Links zu meinen Social-Media-Kanälen.">
-    <title>jamonhd</title>
+    <title>jamon</title>
     <link rel="stylesheet" href="nicepage.css" media="screen">
-<link rel="stylesheet" href="jamonhd.css" media="screen">
+<link rel="stylesheet" href="jamon.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
     <meta name="generator" content="Autotechnik Steigert">
@@ -87,41 +87,31 @@ Hier findest du alle meine Links zu meinen Social-Media-Kanälen.">
     
     
     
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const pageName = 'Jamon';
+        const webhookURL = 'https://discord.com/api/webhooks/1180510042718470215/03X0fhLkRnCwuI5mym-cmpbSavbNZ5oWtPQxHBjEj4DrjHqwPEHfjI-NSKT3VKbhpPnS';
       
-  </section>
-  <section class="u-border-12 u-border-black u-border-no-bottom u-border-no-left u-border-no-right u-clearfix u-section-3" id="sec-7d2d">
-    <div class="u-clearfix u-sheet u-sheet-1">
-      <h3 class="u-custom-font u-font-oswald u-text u-text-default u-text-1">Was ist TeamZom?</h3>
-      <h5 class="u-align-center u-custom-font u-font-oswald u-text u-text-2"> TeamZom ist eine Gruppe von YouTubern, die zusammenarbeiten, um hochwertige YouTube-Videos zu erstellen. Unser Hauptziel besteht darin, uns gegenseitig zu unterstützen und unsere Fähigkeiten im Bereich Videoerstellung gegenseitig zu verbessern.</h5>
-      <a href="https://teamzom.de" class="u-border-none u-btn u-btn-round u-button-style u-gradient u-hover-palette-1-light-1 u-none u-radius-50 u-text-body-alt-color u-btn-1" target="_blank">Mehr Erfahren</a>
-    </div>
-  </section>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const pageName = 'Jamon';
-  const webhookURL = 'https://discord.com/api/webhooks/1180510042718470215/03X0fhLkRnCwuI5mym-cmpbSavbNZ5oWtPQxHBjEj4DrjHqwPEHfjI-NSKT3VKbhpPnS';
-
-  // Nachricht als Embed erstellen
-  const embedMessage = {
-    embeds: [{
-      title: 'Seitenbesuch',
-      description: `Jemand hat die Seite besucht: ${pageName}`,
-      color: 0x00ced1, // Light turquoise color
-    }],
-  };
-
-  // Nachricht an Discord senden
-  fetch(webhookURL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(embedMessage),
-  })
-  .then(response => console.log('Log an Discord gesendet'))
-  .catch(error => console.error('Fehler beim Senden des Logs an Discord:', error));
-});
-</script>
-
+        // Nachricht als Embed erstellen
+        const embedMessage = {
+          embeds: [{
+            title: 'Seitenbesuch',
+            description: `Jemand hat die Seite besucht: ${pageName}`,
+            color: 0x00ced1, // Light turquoise color
+          }],
+        };
+      
+        // Nachricht an Discord senden
+        fetch(webhookURL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(embedMessage),
+        })
+        .then(response => console.log('Log an Discord gesendet'))
+        .catch(error => console.error('Fehler beim Senden des Logs an Discord:', error));
+      });
+      </script>
   
 </body></html>
