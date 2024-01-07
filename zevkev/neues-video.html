@@ -34,14 +34,14 @@
             var channelId = 'UCpr-pIwKcVDAm-5ID_mdj7w';
             
             // Construct the YouTube Data API URL to get the latest video from the channel
-            var apiUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=' + channelId + '&order=date&type=video&videoDuration=extraLong&key=' + apiKey;
+            var apiUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=' + channelId + '&order=date&type=video&videoDuration=medium&key=' + apiKey;
 
             // Make an API request
             fetch(apiUrl)
                 .then(response => response.json())
                 .then(data => {
                     // Filter out shorts
-                    var normalVideos = data.items.filter(item => item.id.videoId && item.id.videoId.length > 10);
+                    var normalVideos = data.items.filter(item => item.id.videoId && item.id.videoId.length > 60);
 
                     if (normalVideos.length > 0) {
                         // Extract the latest normal video ID
@@ -74,4 +74,5 @@
     </div>
 </body>
 </html>
+
 
