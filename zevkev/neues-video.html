@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zum neuesten YouTube-Video weiterleiten</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+    </style>
+    <script>
+        function redirectToLatestVideo() {
+            // Replace 'YOUR_API_KEY' with the provided YouTube Data API key
+            var apiKey = 'AIzaSyBKAqp18Zj_tk4Xm8obWOCt0860h8hpeDo';
+            var channelId = 'UCpr-pIwKcVDAm-5ID_mdj7w';
+            
+            // Construct the YouTube Data API URL to get the latest video from the channel
+            var apiUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=' + channelId + '&order=date&type=video&key=' + apiKey;
+
+            // Make an API request
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    // Extract the latest video ID
+                    var latestVideoId = data.items[0].id.videoId;
+
+                    // Redirect to the latest video
+                    window.location.href = 'https://www.youtube.com/watch?v=' + latestVideoId;
+                })
+                .catch(error => {
+                    console.error('Fehler beim Abrufen der Daten:', error);
+                    showPopup();
+                });
+        }
+
+        function showPopup() {
+            var popup = document.getElementById('popup');
+            popup.style.display = 'block';
+        }
+
+        // Call the function when the page loads
+        window.onload = function() {
+            setTimeout(redirectToLatestVideo, 5000);
+        };
+    </script>
+</head>
+<body>
+    <div class="popup" id="popup">
+        <p>Weiterleitung fehlgeschlagen? Klicke hier!</p>
+    </div>
+</body>
+</html>
