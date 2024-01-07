@@ -34,23 +34,36 @@
             var channelId = 'UCpr-pIwKcVDAm-5ID_mdj7w';
             
             // Construct the YouTube Data API URL to get the latest video from the channel
-            var apiUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=' + channelId + '&order=date&type=video&videoDuration=medium&key=' + apiKey;
+            var apiUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=' + channelId + '&order=date&type=video,live&videoDuration=long&key=' + apiKey;
 
             // Make an API request
             fetch(apiUrl)
                 .then(response => response.json())
                 .then(data => {
-                    // Filter out shorts
-                    var normalVideos = data.items.filter(item => item.id.videoId && item.id.videoId.length > 60);
+                    // Extract the latest video ID
+                    var latestVideoId = data.items[0].id.videoId;
 
-                    if (normalVideos.length > 0) {
-                        // Extract the latest normal video ID
-                        var latestVideoId = normalVideos[0].id.videoId;
-
-                        // Redirect to the latest normal video
-                        window.location.href = 'https://www.youtube.com/watch?v=' + latestVideoId;
+                    // Check if the video is a short
+                    if (data.items[0].id.kind === 'youtube#short') {
+                        // If it's a short, fetch video details to determine its duration
+                        fetch('https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=' + latestVideoId + '&key=' + apiKey)
+                            .then(response => response.json())
+                            .then(videoData => {
+                                var duration = videoData.items[0].contentDetails.duration;
+                                // Check if the video is longer than 1 minute (adjust as needed)
+                                if (duration && duration !== 'PT0S' && duration !== 'PT1M') {
+                                    window.location.href = 'https://www.youtube.com/watch?v=' + latestVideoId;
+                                } else {
+                                    showPopup();
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Fehler beim Abrufen der Daten:', error);
+                                showPopup();
+                            });
                     } else {
-                        showPopup();
+                        // Redirect to the latest video
+                        window.location.href = 'https://www.youtube.com/watch?v=' + latestVideoId;
                     }
                 })
                 .catch(error => {
@@ -64,13 +77,21 @@
             popup.style.display = 'block';
         }
 
+        function retryRedirect() {
+            // Retry redirecting to the latest video
+            redirectToLatestVideo();
+            // Hide the popup after clicking "Klicke hier!"
+            var popup = document.getElementById('popup');
+            popup.style.display = 'none';
+        }
+
         // Call the function when the page loads
         window.onload = redirectToLatestVideo;
     </script>
 </head>
 <body>
     <div class="popup" id="popup">
-        <p>Weiterleitung fehlgeschlagen? Klicke hier!</p>
+        <p>Weiterleitung fehlgeschlagen? <a href="#" onclick="retryRedirect();">Klicke hier!</a></p>
     </div>
 </body>
 </html>
